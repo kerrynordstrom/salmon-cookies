@@ -6,7 +6,6 @@ var firstAndPike = {
   minCustomersPerHr: 23,
   maxCustomersPerHr: 65,
   avgCookiesPerCustomer:	6.3,
-  rawCookieInfoWithTime: [],
   customersPerHr: 0,
   cookiesPerHr: [],
   dailyCookieTotal: 0,
@@ -15,8 +14,15 @@ var firstAndPike = {
     return Math.random() * this.maxCustomersPerHr - this.minCustomersPerHr + 1 + this.minCustomersPerHr;
   },
 
+  getCookiesPerHour: function () {
+    for (var i = 0; i < dailySchedule.length; i++) {
+      var cookiesPerHr = Math.floor(this.getCustomersPerHour() * this.avgCookiesPerCustomer);
+    this.cookiesPerHr.push(cookiesPerHr);
+    }
+  },
+
   getCookiesTotal: function () {
-    for (var i = 0; i <this.cookiesPerHr.length; i++) {
+    for (var i in this.cookiesPerHr) {
       this.dailyCookieTotal += this.cookiesPerHr[i];
   }
     return this.dailyCookieTotal;
@@ -25,17 +31,11 @@ var firstAndPike = {
   render: function() {
     var firstAndPikeUl = document.getElementById('firstAndPike');
     var dailyCookieTotal = this.dailyCookieTotal;
-    var totalLi = document.createElement('li');
-    totalLi.textContent = 'Total: ' + dailyCookieTotal + '.'
-    for (var i = 0; i < dailySchedule.length; i++) {
-      var cookiesPerHr = Math.floor(this.getCustomersPerHour() * this.avgCookiesPerCustomer);
+    for (var i in this.cookiesPerHr) {
       var liEl = document.createElement('li');
-      liEl.textContent = dailySchedule[i] + ': ' + cookiesPerHr + ' cookies';
+      liEl.textContent = dailySchedule[i] + ': ' + this.cookiesPerHr[i] + ' cookies';
       firstAndPikeUl.appendChild(liEl);
-      this.rawCookieInfoWithTime.push(dailySchedule[i], cookiesPerHr);
-      this.cookiesPerHr.push(cookiesPerHr);
     }
-
   },
 
   renderTotal: function() {
@@ -43,15 +43,14 @@ var firstAndPike = {
     totalLi.textContent = 'Total: ' + this.getCookiesTotal() + ' cookies';
     var firstAndPikeUl = document.getElementById('firstAndPikeTotal');
     firstAndPikeUl.appendChild(totalLi);
-
   },
-
 }
 
-firstAndPike.getCustomersPerHour();
+firstAndPike.getCookiesPerHour();
+firstAndPike.getCookiesTotal();
 firstAndPike.render();
 firstAndPike.renderTotal();
-firstAndPike.getCookiesTotal();
+
 
 // seaTacAirport	3	24	1.2
 

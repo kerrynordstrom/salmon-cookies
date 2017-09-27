@@ -3,17 +3,17 @@
 }
 
 body {
-  background: #pink;
+  background: white;
 }
 
 table {
-	border: 10px solid black;
+	border: 10px solid dimgray;
 }
 
 td {
-	padding: 10px;
-	border-radius: 15px;
-  border: 1px solid black;
+	padding: 8px;
+	border-radius: 8px;
+  border: 1px solid dimgray;
   background: white;
 }
 

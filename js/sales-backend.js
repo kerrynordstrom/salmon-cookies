@@ -3,6 +3,7 @@
 var dailySchedule = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm', '8pm']
 
 var allStores = [];
+var allStoresTotal = [];
 var allStoresTable = document.getElementById('allStores')
 
 function Cookiestore (storeName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerCustomer) {
@@ -12,10 +13,9 @@ function Cookiestore (storeName, minCustomersPerHr, maxCustomersPerHr, avgCookie
   this.avgCookiesPerCustomer = avgCookiesPerCustomer;
   this.cookiesPerHr = [];
   this.hourlyCookieTotal = [];
-  this.dailyCookieTotal = [];
+  this.dailyCookieTotal = 0;
   allStores.push(this);
 }
-
 
 Cookiestore.prototype.getCustomersPerHour = function() {
   return Math.random() * this.maxCustomersPerHr - this.minCustomersPerHr + 1 + this.minCustomersPerHr;
@@ -26,12 +26,34 @@ Cookiestore.prototype.getCookiesPerHour = function () {
     var hourlyCookiesSold = this.getCustomersPerHour();
      this.cookiesPerHr.push (Math.floor(hourlyCookiesSold * this.avgCookiesPerCustomer));
   }
-}
+};
+
+Cookiestore.prototype.getDailyCookieTotal = function () {
+  for (var i in this.cookiesPerHr) {
+    this.dailyCookieTotal += this.cookiesPerHr[i];
+    console.log(this.dailyCookieTotal);
+  }
+};
+
+Cookiestore.prototype.renderHeader = function () {
+  var thEl = document.createElement('th');
+  var trEl = document.createElement('tr');
+  thEl.textContent = 'Store';
+  trEl.appendChild(thEl);
+  for (var i = 0; i <= dailySchedule.length; i++) {
+    thEl = document.createElement('th');
+    thEl.textContent = dailySchedule[i];
+    trEl.appendChild(thEl);
+    allStoresTable.appendChild(trEl);
+  }
+  thEl.textContent = 'Daily Total';
+  trEl.appendChild(thEl);
+};
 
 Cookiestore.prototype.render = function() {
   var trEl = document.createElement('tr');
   var tdEl = document.createElement('td');
-
+  var thEl = document.createElement('th');
   tdEl.textContent = this.storeName;
   trEl.appendChild(tdEl);
 
@@ -40,34 +62,37 @@ Cookiestore.prototype.render = function() {
   tdEl.textContent = this.cookiesPerHr[i] + ' cookies';
   trEl.appendChild(tdEl);
 }
+  
+
+  thEl = document.createElement('th');
+  thEl.textContent = this.dailyCookieTotal;
+  trEl.appendChild(thEl);
+
 
 allStoresTable.appendChild(trEl);
 };
 
-Cookiestore.prototype.renderHeader = function () {
-  var thEl = document.createElement('th');
-  var trEl = document.createElement('tr');
-  for (var i = -1; i < dailySchedule.length; i++) {
-    thEl = document.createElement('th');
-    thEl.textContent = dailySchedule[i];
-    trEl.appendChild(thEl);
-    allStoresTable.appendChild(trEl);
-  }
-};
-  Cookiestore.prototype.renderHeader();
+var firstAndPike = new Cookiestore('First and Pike', 23, 65, 6.3);
+var alki = new Cookiestore('Alki', 2, 16, 4.6);
+var seaTacAirport = new Cookiestore('SeaTac Airport', 3, 24, 1.2);
+var seattleCenter = new Cookiestore('Seattle Center', 11, 38, 3.7);
+var capitolHill = new Cookiestore('Capitol Hill', 20, 38, 2.3);
 
-var firstAndPike = new Cookiestore('First and Pike', 23, 65, 6.3)
-  firstAndPike.getCookiesPerHour();
-  firstAndPike.render();
-var seaTacAirport = new Cookiestore('SeaTac Airport', 3, 24, 1.2)
-  seaTacAirport.getCookiesPerHour();
-  seaTacAirport.render();
-var seattleCenter = new Cookiestore('Seattle Center', 11, 38, 3.7)
-  seattleCenter.getCookiesPerHour();
-  seattleCenter.render();
-var capitolHill = new Cookiestore('Capitol Hill', 20, 38, 2.3)
-  capitolHill.getCookiesPerHour();
-  capitolHill.render();
-var alki = new Cookiestore('Alki', 2, 16, 4.6)
-  alki.getCookiesPerHour();
-  alki.render();
+Cookiestore.prototype.renderHeader();
+
+for (var i in allStores) {
+  allStores[i].getDailyCookieTotal();
+  allStores[i].getCookiesPerHour();
+  allStores[i].render();
+  // allStores[i].allStoresColumnTotal();
+}
+//
+// function allStoresColumnTotal() {
+//   for (var i < 0; i < dailySchedule.length; i++) {
+//     allStoresColumnTotal = 0;
+//     for (var k < 0; i < allStores.length; k++) {
+//       allStoresColumnTotal += allStores[k].hourlyCookieTotal[i];
+//     }
+//   }
+//   allStoresTotal.push(allStoresColumnTotal)
+// };

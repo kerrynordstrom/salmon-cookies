@@ -28,12 +28,15 @@ Cookiestore.prototype.getCookiesPerHour = function () {
   }
 };
 
-Cookiestore.prototype.getDailyCookieTotal = function () {
-  for (var i in this.cookiesPerHr) {
-    this.dailyCookieTotal += this.cookiesPerHr[i];
-    console.log(this.dailyCookieTotal);
+
+
+Cookiestore.prototype.getDailyTotalCookies = function () {
+  for (i = 0; i < this.cookiesPerHr.length; i++) {
+  this.dailyCookieTotal += this.cookiesPerHr[i];
   }
+  // console.log(this.dailyCookieTotal);
 };
+
 
 Cookiestore.prototype.renderHeader = function () {
   var thEl = document.createElement('th');
@@ -62,15 +65,45 @@ Cookiestore.prototype.render = function() {
   tdEl.textContent = this.cookiesPerHr[i] + ' cookies';
   trEl.appendChild(tdEl);
 }
-  
 
+  for (i in allStores) {
+    allStores[i].getDailyTotalCookies();
+  };
   thEl = document.createElement('th');
-  thEl.textContent = this.dailyCookieTotal;
+  thEl.textContent = Math.floor(this.dailyCookieTotal);
   trEl.appendChild(thEl);
-
-
-allStoresTable.appendChild(trEl);
+  allStoresTable.appendChild(trEl);
 };
+
+function allStoresColumnTotal() {
+  for (var i = 0; i < dailySchedule.length; i++) {
+    var  allStoresColumnTotal = 0;
+    for (var k = 0; k < allStores.length; k++) {
+      allStoresColumnTotal += allStores[k].cookiesPerHr[i];
+      // console.log('allStoresColumnTotal', allStores[k].hourlyCookieTotal[i])
+    }
+    allStoresTotal.push(allStoresColumnTotal)
+  }
+};
+
+function renderAllTotals() {
+  var trEl = document.createElement('tr');
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Hourly Totals';
+  trEl.appendChild(thEl);
+  allStoresTable.appendChild(trEl);
+
+  for (var i in dailySchedule) {
+  thEl = document.createElement('th');
+  thEl.textContent = allStoresTotal[i];
+  trEl.appendChild(thEl);
+  allStoresTable.appendChild(trEl)
+  console.log('th', thEl);
+  }
+};
+
+
+
 
 var firstAndPike = new Cookiestore('First and Pike', 23, 65, 6.3);
 var alki = new Cookiestore('Alki', 2, 16, 4.6);
@@ -81,18 +114,8 @@ var capitolHill = new Cookiestore('Capitol Hill', 20, 38, 2.3);
 Cookiestore.prototype.renderHeader();
 
 for (var i in allStores) {
-  allStores[i].getDailyCookieTotal();
   allStores[i].getCookiesPerHour();
   allStores[i].render();
-  // allStores[i].allStoresColumnTotal();
 }
-//
-// function allStoresColumnTotal() {
-//   for (var i < 0; i < dailySchedule.length; i++) {
-//     allStoresColumnTotal = 0;
-//     for (var k < 0; i < allStores.length; k++) {
-//       allStoresColumnTotal += allStores[k].hourlyCookieTotal[i];
-//     }
-//   }
-//   allStoresTotal.push(allStoresColumnTotal)
-// };
+allStoresColumnTotal();
+renderAllTotals();

@@ -4,6 +4,7 @@ var dailySchedule = ['6am', '7am', '8am', '9am', '10am', '11am', '12pm', '1pm', 
 
 var allStores = [];
 var allStoresTotal = [];
+var totalTotal = 0;
 var allStoresTable = document.getElementById('allStores')
 
 function Cookiestore (storeName, minCustomersPerHr, maxCustomersPerHr, avgCookiesPerCustomer) {
@@ -28,15 +29,11 @@ Cookiestore.prototype.getCookiesPerHour = function () {
   }
 };
 
-
-
 Cookiestore.prototype.getDailyTotalCookies = function () {
   for (i = 0; i < this.cookiesPerHr.length; i++) {
   this.dailyCookieTotal += this.cookiesPerHr[i];
   }
-  // console.log(this.dailyCookieTotal);
 };
-
 
 Cookiestore.prototype.renderHeader = function () {
   var thEl = document.createElement('th');
@@ -80,10 +77,13 @@ function allStoresColumnTotal() {
     var  allStoresColumnTotal = 0;
     for (var k = 0; k < allStores.length; k++) {
       allStoresColumnTotal += allStores[k].cookiesPerHr[i];
-      // console.log('allStoresColumnTotal', allStores[k].hourlyCookieTotal[i])
     }
     allStoresTotal.push(allStoresColumnTotal)
   }
+  for (var m = 0; m < allStoresTotal.length; m++) {
+      totalTotal += allStoresTotal[m];
+      console.log(totalTotal);
+    }
 };
 
 function renderAllTotals() {
@@ -97,13 +97,13 @@ function renderAllTotals() {
   thEl = document.createElement('th');
   thEl.textContent = allStoresTotal[i];
   trEl.appendChild(thEl);
-  allStoresTable.appendChild(trEl)
-  console.log('th', thEl);
+  allStoresTable.appendChild(trEl);
   }
+  var thEl = document.createElement('th');
+  thEl.textContent = 'Total for All Stores\n' + totalTotal;
+  trEl.appendChild(thEl);
+  allStoresTable.appendChild(trEl);
 };
-
-
-
 
 var firstAndPike = new Cookiestore('First and Pike', 23, 65, 6.3);
 var alki = new Cookiestore('Alki', 2, 16, 4.6);

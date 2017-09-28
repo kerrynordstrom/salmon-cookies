@@ -63,7 +63,6 @@ Cookiestore.prototype.render = function() {
     tdEl.textContent = this.cookiesPerHr[i] + ' cookies';
     trEl.appendChild(tdEl);
   }
-
   for (i in allStores) {
     allStores[i].getDailyTotalCookies();
   };
@@ -104,10 +103,11 @@ function handleNewLocation(event) {
 
   Cookiestore.prototype.renderHeader();
   newLocation.getCookiesPerHour();
+  allStoresTable.innerHTML =  ' ';
   for (var i in allStores) {
     allStores[i].render();
   }
-  allStoresColumnTotal();
+  // allStoresColumnTotal();
   renderAllTotals();
 }
 

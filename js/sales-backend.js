@@ -101,9 +101,9 @@ function handleNewLocation(event) {
   event.target.maxCust.value = null;
   event.target.avgPerCust.value = null;
 
+  allStoresTable.innerHTML =  ' ';
   Cookiestore.prototype.renderHeader();
   newLocation.getCookiesPerHour();
-  allStoresTable.innerHTML =  ' ';
   for (var i in allStores) {
     allStores[i].render();
   }

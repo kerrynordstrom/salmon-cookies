@@ -1,4 +1,4 @@
-* {
+ /*{
   margin: 0px;
   color: white;
 }
@@ -46,7 +46,7 @@ p {
 #nav-bar a {
 text-decoration: none;
 /*padding: 14px 16px;*/
-color: inherit;
+/*color: inherit;
 }
 
 #nav-bar a:hover:not(.active) {
@@ -83,4 +83,4 @@ margin-top: 250px;
 margin-left: 450px;
 
 
-}
+}*/*/

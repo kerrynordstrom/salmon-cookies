@@ -9,6 +9,15 @@ body {
     background-color: #665f64;
 }
 
+p {
+  font-family: 'Georgia';
+}
+
+li {
+  display: inline;
+  padding: 0.5em;
+}
+
 #content {
   overflow: auto;
 }
@@ -29,10 +38,6 @@ body {
   margin-right: 0%;
 }
 
-li {
-  display: inline;
-  padding: 0.5em;
-}
 
 #nav, #footer {
   background-color: green;
@@ -58,10 +63,6 @@ li {
   float: left;
 }
 
-p {
-  font-family: 'Georgia';
-
-}
 
 #front-center-header {
   background-color: #526d53 !important;

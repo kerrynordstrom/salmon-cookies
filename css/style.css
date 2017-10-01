@@ -1,16 +1,56 @@
 * {
   margin: 0px;
-  color: white;
   border: 1px solid red;
 }
 
 body {
     width: 90%;
-    background-color: #665f64;
+    color: black;
+    background-image: url("../assets/gradientbackground.jpg");
+}
+
+section {
+  margin-top: 70px;
+  margin-left: 175px;
+  margin-right: 175px;
+  width: 900px;
+  color: black;
+  background-color: white;
+}
+
+section h2 {
+  text-align: center;
+  width: 900px;
+  /*margin-left: 225px;*/
+  display: block;
+}
+
+section h3 {
+  display: block;
+  width: 900px;
+  text-align: center;
+}
+
+section ul {
+  margin-left: -42px;
+}
+
+section li {
+  width: 900px;
+  text-align: center;
+  display: block;
+
 }
 
 p {
-  font-family: 'Georgia';
+  font-family: 'Helvetica';
+}
+
+footer {
+  margin-left: 175px;
+  margin-right: 175px;
+  width: 900px;
+  background-color: white;
 }
 
 li {
@@ -87,7 +127,6 @@ li {
   display: inline;
   float: right;
   height: 55px;
-  background-color: black;
   border-right: 1px solid #bbb;
 }
 
@@ -102,14 +141,13 @@ color: inherit;
 }
 
 #nav-bar a:hover:not(.active) {
-  background-color: #526d53;
+  color: #FFDDA1;
   padding: inherit;
 }
 
 
 #salmon-pic {
-  margin-top: 120px;
-  margin-left: 350px;
+  margin-left: 320px;
   width: 250px;
   height: auto;
 }

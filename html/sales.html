@@ -4,6 +4,10 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" type="text/css" href="../css/sales-styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:400i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Slabo+27px" rel="stylesheet">
   </head>
   <body>
       <div id="front-center-header">
@@ -22,27 +26,29 @@
         <li><a href="index.html">Home</a></li>
       </div>
     </div>
+
     <form id="addLocation">
-    <fieldset>
-      
-      <legend>Add or update location with key information</legend>
+      <fieldset>
 
-      <label for="location">Location: </label>
-      <input name="location" type="text" size ="30"/>
+        <legend>Add or update location with key information</legend>
 
-      <label for="minCust">Minimum Customers Per Hour: </label>
-      <input name="minCust" type="number" size="30" />
+        <label for="location">Location: </label>
+        <input name="location" type="text" size ="30"/>
 
-      <label for="maxCust">Maximum Customers Per Hour: </label>
-      <input name="maxCust" type="number" size="30" />
+        <label for="minCust">Minimum Customers Per Hour: </label>
+        <input name="minCust" type="number" size="30" />
 
-      <label for="avgPerCust">Average Cookies Per Customer: </label>
-      <input name="avgPerCust" type="number" size="30" />
+        <label for="maxCust">Maximum Customers Per Hour: </label>
+        <input name="maxCust" type="number" size="30" />
 
-      <button type="submit">Submit location info</button>
-    </fieldset>
+        <label for="avgPerCust">Average Cookies Per Customer: </label>
+        <input name="avgPerCust" type="number" size="30" />
+
+        <button type="submit">Submit location info</button>
+      </fieldset>
   </form>
-    <h2>Salmon Cookies sales by Location</h2>
+
+    <h2>Salmon Cookies sales by Location</h2 oninvalid="">
 
     <table id="allStores"></table>
 

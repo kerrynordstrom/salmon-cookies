@@ -1,101 +1,68 @@
 * {
   margin: 0px;
-  border: 1px solid red;
+  /*border: 1px solid red;*/
 }
 
 body {
     width: 90%;
-    color: black;
     background-image: url("../assets/gradientbackground.jpg");
 }
 
-section {
+footer {
+  margin-left: 215px;
+  margin-right: 215px;
+  width: 980px;
+  background-color: white;
+}
+
+#event-list {
+  position: fixed;
+  font-family: 'Josefin Slab', serif;
+  padding: 20px 0px -10px 0px;
   margin-top: 70px;
-  margin-left: 175px;
-  margin-right: 175px;
-  width: 900px;
+  margin-left: 215px;
+  margin-right: 215px;
+  width: 980px;
+  height: auto;
   color: black;
   background-color: white;
 }
 
-section h2 {
+#event-list h2 {
+  padding: 0.5em;
   text-align: center;
-  width: 900px;
+  width: 980px;
   /*margin-left: 225px;*/
   display: block;
 }
 
-section h3 {
-  display: block;
-  width: 900px;
-  text-align: center;
-}
-
-section ul {
-  margin-left: -42px;
-}
-
-section li {
-  width: 900px;
-  text-align: center;
-  display: block;
-
-}
-
-p {
-  font-family: 'Helvetica';
-}
-
-footer {
-  margin-left: 175px;
-  margin-right: 175px;
-  width: 900px;
-  background-color: white;
-}
-
-li {
-  display: inline;
+#event-list h3 {
   padding: 0.5em;
+  display: block;
+  width: 980px;
+  text-align: center;
 }
 
-#content {
-  overflow: auto;
+#event-list ul {
+  margin-left: -50px;
 }
 
-#nav-bar, #feature, #footer {
+#event-list li {
+  padding: 0.5em;
+  width: 980px;
+  text-align: center;
+  display: block;
+
+}
+
+/*
+#nav-bar, #footer {
   margin: 0%;
   width: 100%;
-}
-
-.column1, .column, .column3 {
-  width: 300px;
-  height: 250px;
-  float: left;
-  margin: 10px;
-}
-
-.column3 {
-  margin-right: 0%;
-}
-
-
-#nav, #footer {
-  background-color: green;
-  padding: 0.5em 0;
-  f
-}
-
-#feature {
-  margin-top: 120px;
-  height: 10em;
-  margin-bottom: 1em;
-  background-color: green;
-}
-
+}*/
 
 #header-container {
-  font-family: 'Slabo 27px', serif;
-  font-size: 75%;
+  font-size: 100%%;
   position: fixed;
   width: 275px;
   height: auto;
@@ -105,6 +72,7 @@ li {
 
 
 #front-center-header {
+  font-family: 'Amatic SC', cursive;
   background-color: #526d53 !important;
   color: white;
   position: fixed;
@@ -115,9 +83,10 @@ li {
 }
 
 
+
 #nav-bar ul {
   list-style-type: none;
-  margin: 0;
+  margin: 0px;
   padding: 0px;
   overflow: hidden;
 }
@@ -147,7 +116,7 @@ color: inherit;
 
 
 #salmon-pic {
-  margin-left: 320px;
+  margin-left: 360px;
   width: 250px;
   height: auto;
 }
